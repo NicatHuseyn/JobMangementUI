@@ -1,0 +1,26 @@
+main{
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .admin-menu{
+        width: 20%;
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: #001529;
+        top: 0;
+    }
+
+    .admin-main{
+        width: 100%;
+        height: 100vh;
+        overflow: auto;
+
+        .main-inner{
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+        }
+    }
+}
