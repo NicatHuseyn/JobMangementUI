@@ -58,11 +58,29 @@ export async function deleteData(endpoint, id) {
     }
 }
 
+// Upload File
+// export const uploadFile = async (endpoint, file) => {
+//     const formData = new FormData();
+//     formData.append('file', file);
+
+//     try {
+//         const response = await axios.post(`${BASE_URL}/${endpoint}`, formData{
+//             headers: {
+//                 'Content-Type': 'multipart/form-data';
+//             },
+//         });
+//         return response;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
 
 export const endpoints = {
     industries: "industries",
     categories: "categories",
     companies: "companies",
     blogs: "blogs",
-    jobs: "jobs"
+    jobs: "jobs",
+    uploadfile: "uploadfile"
 }

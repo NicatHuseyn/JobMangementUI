@@ -1,68 +1,58 @@
-import React from "react";
 import styles from "./index.module.scss";
 
 import { useFormik } from "formik";
 import { Input, Button } from "antd";
 import * as Yup from "yup";
+import toast from "react-hot-toast";
+import ToasterComponent from "../../Components/ToastComponent";
+import { createData, endpoints } from "../../Services/httpClientServer";
 
 const CreateIndustry = () => {
   // Code for yup
   const ValidationSchema = Yup.object().shape({
-    industryName: Yup.string()
+    name: Yup.string()
       .min(3, "Too Short!")
       .max(50, "Too Long!")
-      .required("Required"),
-    industryIcon: Yup.string()
-      // .min(2, "Too Short!")
-      // .max(50, "Too Long!")
       .required("Required"),
   });
   // Code for yup
 
   const { handleChange, handleSubmit, values, errors, touched } = useFormik({
     initialValues: {
-      industryName: "",
-      industryIcon: "",
+      name: "",
     },
     validationSchema: ValidationSchema,
     onSubmit: (values, { resetForm }) => {
-      alert(JSON.stringify(values, null, 2));
+      createData(endpoints.industries, values).then((res) => {
+        if (res.data.data.success) {
+          toast.success(res.data.data.message);
+        } else {
+          toast.error(res.data.data.message);
+        }
+      });
       resetForm();
     },
   });
 
   return (
     <section>
+      <ToasterComponent />
       <div className={styles["inner"]}>
         <div className={styles["form"]}>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="industryName">Industry Name</label>
+              <label htmlFor="name">Industry Name</label>
               <Input
-                id="industryName"
-                name="industryName"
+                id="name"
+                name="name"
                 type="text"
                 onChange={handleChange}
-                value={values.industryName}
+                value={values.name}
                 placeholder="Enter Industry Name"
               />
-              {errors.industryName && touched.industryName && (
-                  <div className="error">{errors.industryName}</div>
-                )}
-            </div>
-            <div>
-              <label htmlFor="industryIcon">Industry Icon</label>
-              <Input
-                id="industryIcon"
-                name="industryIcon"
-                type="file"
-                onChange={handleChange}
-                value={values.industryIcon}
-                accept="image/png, image/jpg"
-              />
-              {errors.industryIcon && touched.industryIcon && (
-                  <div className="error">{errors.industryIcon}</div>
-                )}
+              {errors.name && touched.name && (
+                <div className="error">{errors.name}</div>
+              )}
             </div>
 
             <div>
