@@ -10,9 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^42.0.0",
+    "@ckeditor/ckeditor5-react": "^8.0.0",
     "@reduxjs/toolkit": "^2.2.5",
     "antd": "^5.18.1",
     "axios": "^1.7.2",
+    "ckeditor5": "^42.0.0",
+    "ckeditor5-premium-features": "^42.0.0",
     "cors": "^2.8.5",
     "draft-js": "^0.11.7",
     "formik": "^2.4.6",

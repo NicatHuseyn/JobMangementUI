@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import toast from "react-hot-toast";
 import ToasterComponent from "../../../Components/ToastComponent";
 import { createData, endpoints } from "../../../Services/httpClientServer";
+import RichText from "../../../Components/RichTextComponent";
 
 const CreateCompany = () => {
   // Code for yup
@@ -97,6 +98,8 @@ const CreateCompany = () => {
             </div>
 
             <div>
+              <label htmlFor="Description">Description</label>
+              <RichText />
             </div>
 
             <div>
