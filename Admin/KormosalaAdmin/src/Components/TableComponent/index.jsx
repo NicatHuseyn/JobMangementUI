@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./index.module.scss";
+import { NavLink } from "react-router-dom";
 
 import { Table, Button, Modal } from "antd";
 import {
@@ -12,7 +13,6 @@ import toast, { Toaster } from "react-hot-toast";
 const TableComponent = ({ endpoint }) => {
   // Data works
   const [datas, setDatas] = useState([]);
-
   const [columns, setColumns] = useState([]);
 
   useEffect(() => {
@@ -27,6 +27,17 @@ const TableComponent = ({ endpoint }) => {
         setColumns([]);
       });
   }, []);
+
+  // Handle Update
+
+  const [updateData, setUpdateData] = useState(null);
+
+  function getSelectData(idParam) {
+    const findData = datas.find((d) => d.id === idParam);
+    setUpdateData(findData);
+  }
+
+  // Handle Update
 
   const generateColumns = (data) => {
     if (data.length === 0) {
@@ -60,8 +71,15 @@ const TableComponent = ({ endpoint }) => {
         title: "Update",
         dataIndex: "update",
         render: (text, record) => (
-          <Button style={{ backgroundColor: "green" }} type="primary" danger>
-            Update
+          <Button
+            style={{ backgroundColor: "green" }}
+            type="primary"
+            danger
+            onClick={() => {
+              getSelectData(record.id);
+            }}
+          >
+            <NavLink to={`/update-${endpoint}`}>Update</NavLink>
           </Button>
         ),
       }
@@ -107,7 +125,8 @@ const TableComponent = ({ endpoint }) => {
 
   //   Function for Render Table
   function renderTable() {
-    getAllData(endpoints.industries)
+    // eslint-disable-next-line react/prop-types
+    getAllData(`${endpoint}`)
       .then((res) => {
         if (res.data && res.data.length > 0) {
           setDatas(res.data);
@@ -126,8 +145,9 @@ const TableComponent = ({ endpoint }) => {
   // !  Delete Data
 
   function handleDelete(id) {
-    console.log(id);
-    deleteData(endpoints.industries, id).then((res) => {
+    console.log(endpoint, id);
+    deleteData(endpoint, id).then((res) => {
+      console.log(res.data);
       if (res.data.data.success) {
         renderTable();
         toast.success("Industry deleted successfully");
@@ -173,10 +193,6 @@ const TableComponent = ({ endpoint }) => {
           >
             <p>Datanı silməyə əminsiniz?</p>
           </Modal>
-        </span>
-
-        <span>
-            {/* Update Modal */}
         </span>
       </div>
     </section>

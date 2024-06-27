@@ -1,6 +1,7 @@
-import TableComponent from "../../Components/TableComponent";
-import { endpoints } from "../../Services/httpClientServer";
 import styles from "./index.module.scss";
+
+import { endpoints } from "../../../Services/httpClientServer";
+import TableComponent from "../../../Components/TableComponent";
 
 const Industry = () => {
   return (

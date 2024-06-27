@@ -49,9 +49,9 @@ export const updateData = async (endpoint, payload) => {
 
 
 // Delete Data
-export async function deleteData(endpoint, id) {
+export async function deleteData(endpoints, id) {
     try {
-        const response = await axios.delete(`${BASE_URL}/${endpoint}/${id}`);
+        const response = await axios.delete(`${BASE_URL}/${endpoints}/${id}`);
         return response;
     } catch (error) {
         console.log(error);
@@ -82,5 +82,6 @@ export const endpoints = {
     companies: "companies",
     blogs: "blogs",
     jobs: "jobs",
-    uploadfile: "uploadfile"
+    uploadfile: "uploadfile",
+    locations: "locations"
 }

@@ -8,6 +8,7 @@ import { MdOutlineCategory } from "react-icons/md";
 import { BsBuildings } from "react-icons/bs";
 import { TbLogs } from "react-icons/tb";
 import { MdWorkOutline } from "react-icons/md";
+import { IoLocationOutline } from "react-icons/io5";
 
 const SideMenu = () => {
   // ? Side Menu Item
@@ -30,26 +31,16 @@ const SideMenu = () => {
       children: [
         {
           key: "2",
-          label: <NavLink to="/industry">Industry Page</NavLink>,
+          label: <NavLink to="/industry-list">Industry List</NavLink>,
         },
         {
           key: "3",
           label: <NavLink to="/create-industry">Create Industry</NavLink>,
         },
-        // {
-        //   key: "sub3",
-        //   label: "Submenu",
-        //   children: [
-        //     {
-        //       key: "4",
-        //       label: "Option 4",
-        //     },
-        //     {
-        //       key: "5",
-        //       label: "Option 5",
-        //     },
-        //   ],
-        // },
+        {
+          key: "4",
+          label: <NavLink to="/update-industry">Update Industry</NavLink>,
+        },
       ],
     },
     {
@@ -58,12 +49,16 @@ const SideMenu = () => {
       icon: <MdOutlineCategory />,
       children: [
         {
-          key: "4",
-          label: <NavLink to="/category">Category Page</NavLink>,
+          key: "5",
+          label: <NavLink to="/category-list">Category List</NavLink>,
         },
         {
-          key: "5",
+          key: "6",
           label: <NavLink to="/create-category">Create Category</NavLink>,
+        },
+        {
+          key: "7",
+          label: <NavLink to="/update-category">Update Category</NavLink>,
         },
       ],
     },
@@ -73,12 +68,16 @@ const SideMenu = () => {
       icon: <BsBuildings />,
       children: [
         {
-          key: "6",
-          label: <NavLink to="/company">Company Page</NavLink>,
+          key: "8",
+          label: <NavLink to="/company-list">Company List</NavLink>,
         },
         {
-          key: "7",
+          key: "9",
           label: <NavLink to="/create-company">Create Company</NavLink>,
+        },
+        {
+          key: "10",
+          label: <NavLink to="/update-company">Update Company</NavLink>,
         },
       ],
     },
@@ -88,12 +87,16 @@ const SideMenu = () => {
       icon: <TbLogs />,
       children: [
         {
-          key: "8",
-          label: <NavLink to="/blog">Blog Page</NavLink>,
+          key: "11",
+          label: <NavLink to="/blog-list">Blog List</NavLink>,
         },
         {
-          key: "9",
+          key: "12",
           label: <NavLink to="/create-blog">Create Blog</NavLink>,
+        },
+        {
+          key: "13",
+          label: <NavLink to="/update-blog">Update Blog</NavLink>,
         },
       ],
     },
@@ -103,12 +106,35 @@ const SideMenu = () => {
       icon: <MdWorkOutline />,
       children: [
         {
-          key: "10",
-          label: <NavLink to="/job">Job Page</NavLink>,
+          key: "14",
+          label: <NavLink to="/job-list">Job List</NavLink>,
         },
         {
-          key: "11",
+          key: "15",
           label: <NavLink to="/create-job">Create Job</NavLink>,
+        },
+        {
+          key: "16",
+          label: <NavLink to="/update-job">Update Job</NavLink>,
+        },
+      ],
+    },
+    {
+      key: "sub8",
+      label: "Address",
+      icon: <IoLocationOutline />,
+      children: [
+        {
+          key: "17",
+          label: <NavLink to="/create-locations">Address List</NavLink>,
+        },
+        {
+          key: "18",
+          label: <NavLink to="/create-job">Create Job</NavLink>,
+        },
+        {
+          key: "19",
+          label: <NavLink to="/update-jobs">Update Job</NavLink>,
         },
       ],
     },
