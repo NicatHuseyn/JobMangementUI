@@ -20,9 +20,11 @@ const TableComponent = ({ endpoint }) => {
       .then((res) => {
         setDatas(res.data);
         generateColumns(res.data);
+
+        console.log(res);
       })
       .catch((err) => {
-        console.error("Data fetch error: ", err);
+        // console.error("Data fetch error: ", err);
         setDatas([]);
         setColumns([]);
       });
