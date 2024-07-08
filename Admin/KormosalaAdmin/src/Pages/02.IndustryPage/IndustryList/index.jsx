@@ -2,8 +2,12 @@ import styles from "./index.module.scss";
 
 import { endpoints } from "../../../Services/httpClientServer";
 import TableComponent from "../../../Components/TableComponent";
+// import { useGetIndustriesQuery } from "../../../Services/stores/industriesApi";
 
 const Industry = () => {
+
+  // test rtk query
+
   return (
     <section>
       <div className={styles["inner"]}>

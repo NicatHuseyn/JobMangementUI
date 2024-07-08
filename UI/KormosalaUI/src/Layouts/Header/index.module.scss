@@ -1,0 +1,167 @@
+header{
+    width: 100%;
+    padding: 20px 5px;
+    background-color: #296DEA;
+    font-family: "Sarabun", sans-serif;
+
+    .header-inner{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .responsive-menu{
+            display: none;
+        }
+
+
+        .logo{
+            a{
+                img{
+                    width: 140px;
+                }
+            }
+        }
+
+        nav{
+            ul{
+                display: flex;
+                gap: 0px 40px;
+                li{
+                    color: #F0D3EA;
+                    a{
+                        font-size: 16px;
+                        color: #F0D3EA;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+
+        .post{
+            a{
+                padding: 10px 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #FF9A0C;
+                color: #fff;
+                border-radius: 4px;
+
+                span{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0 10px;
+                }
+            }
+        }
+
+        .register{
+            display: flex;
+            align-items: center;
+            gap: 0 20px;
+        }
+
+        .responsive-register{
+            display: none;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    header{
+        width: 100%;
+
+        .header-inner{
+            width: 100%;
+
+            nav{
+                display: none;
+            }
+
+            .register{
+                display: none;
+            }
+
+            .post{
+                display: none;
+            }
+
+            .responsive-menu {
+                display: block;
+                position: relative;
+              
+                .menu {
+                  display: flex;
+                  justify-content: flex-end;
+                  padding: 10px;
+              
+                  .menu-btn {
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                    padding: 10px;
+                  }
+              
+                  .bar-icon {
+                    font-size: 24px;
+                    color: #333;
+                  }
+                }
+              
+                .side-menu {
+                  position: fixed;
+                  top: 0;
+                  right: 0;
+                  width: 250px;
+                  height: 100%;
+                  background: #fff;
+                  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+                  transform: translateX(100%);
+                  transition: transform 0.3s ease-in-out;
+                  z-index: 1000;  // Menü üstteki diğer içeriklerin üstünde olmalı
+                  overflow: auto; // Menü içeriği taşarsa kaydırma
+                }
+              
+                .side-menu.show {
+                  transform: translateX(0);
+                }
+              
+                .menu-items {
+                  display: flex;
+                  flex-direction: column;
+                  padding: 20px;
+              
+                  a {
+                    text-decoration: none;
+                    color: #333;
+                    padding: 10px 0;
+                    font-size: 18px;
+                    display: block;  // Linklerin tüm genişliği kaplamasını sağlar
+              
+                    &:hover {
+                      background: #f0f0f0;
+                    }
+                  }
+                }
+              }
+              
+              .responsive-register{
+                display: block;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .user-icon{
+                    font-size: 22px;
+                    color: #fff;
+                }
+
+              }
+
+
+        }
+    }
+  }

@@ -6,11 +6,16 @@ import * as Yup from "yup";
 import toast from "react-hot-toast";
 import ToasterComponent from "../../../Components/ToastComponent";
 import { createData, endpoints } from "../../../Services/httpClientServer";
+import TextArea from "antd/es/input/TextArea";
 
 const CreateCategory = () => {
   // Code for yup
   const ValidationSchema = Yup.object().shape({
     name: Yup.string()
+      .min(3, "Too Short!")
+      .max(100, "Too Long!")
+      .required("Required"),
+    description: Yup.string()
       .min(3, "Too Short!")
       .max(100, "Too Long!")
       .required("Required"),
@@ -20,6 +25,7 @@ const CreateCategory = () => {
   const { handleChange, handleSubmit, values, errors, touched } = useFormik({
     initialValues: {
       name: "",
+      description:""
     },
     validationSchema: ValidationSchema,
     onSubmit: (values, { resetForm }) => {
@@ -53,6 +59,20 @@ const CreateCategory = () => {
               />
               {errors.name && touched.name && (
                 <div className="error">{errors.name}</div>
+              )}
+            </div>
+            <div>
+              <label htmlFor="description">Category Description</label>
+              <TextArea
+                id="description"
+                name="description"
+                type="text"
+                onChange={handleChange}
+                value={values.description}
+                placeholder="Enter Category Description"
+              />
+              {errors.description && touched.description && (
+                <div className="error">{errors.description}</div>
               )}
             </div>
 

@@ -1,9 +1,20 @@
-import React from 'react'
+import styles from "./index.module.scss";
+
+import { endpoints } from "../../../Services/httpClientServer";
+import TableComponent from "../../../Components/TableComponent";
 
 const BlogList = () => {
   return (
-    <div>BlogList</div>
-  )
-}
+    <section>
+      <div className={styles["inner"]}>
+        <h1>Blog List Page</h1>
+      </div>
 
-export default BlogList
+      <div className={styles["list"]}>
+        <TableComponent endpoint={endpoints.blogs} />
+      </div>
+    </section>
+  );
+};
+
+export default BlogList;

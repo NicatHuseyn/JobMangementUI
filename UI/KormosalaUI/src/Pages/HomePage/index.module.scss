@@ -1,0 +1,251 @@
+section{
+    width: 100%;
+    padding: 200px 0;
+    background-color: #185DDC;
+    font-family: "Sarabun",sans-serif;
+
+    .main-inner{
+        width: 100%;
+        text-align: center;
+
+        .main-text{
+            width: 100%;
+            padding: 0 100px;
+            color: #fff;
+
+            h1{
+                font-size: 70px;
+                margin: 30px 0;
+                font-weight: 500;
+            }
+            p{
+                font-size: 16px;
+                font-weight: 300;
+                margin: 30px 0;
+            }
+        }
+
+        .main-form{
+            width: 100%;
+            margin: 30px 0;
+            
+            form{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0 20px;
+
+                .input{
+                    padding: 18px 10px;
+                    width: 300px;
+                    outline: none;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+
+                button{
+                    padding: 19px 20px;
+                    color: #fff;
+                    gap: 0 10px;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    background-color: #FE9804;
+                    font-size: 16px;
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+
+// Code For Category
+
+
+.category-section{
+    width: 100%;
+    padding: 100px 0;
+    background-color: #fff;
+
+    .category-inner{
+        width: 100%;
+
+        .head{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h3{
+                color: #000;
+                font-size: 30px;
+                font-weight: 500;
+            }
+
+            span{
+                display: flex;
+                align-items: center;
+                gap: 0 10px;
+                transition: all 0.3s;
+                a{
+                    color: #185DDC;
+                    font-size: 16px;
+                }
+
+                &:hover{
+                    transform: translateX(-20px);
+                }
+            }
+        }
+
+        .categories{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0 30px;
+            padding: 50px 0;
+
+            .category-box{
+                width: 200px;
+                height  : 200px;
+                box-shadow: rgba(150, 125, 240, 0.35) 0px 5px 15px;
+                cursor: pointer;
+                text-align: center;
+                padding: 20px 5px;
+                overflow: hidden;
+
+                a{
+                    h4{
+                        color: #000;
+                        font-size: 16px;
+                        font-weight: 400;
+                        margin: 15px 0;
+                    }
+                    p{
+                        color: #000;
+                        margin: 15px 0;
+                        font-size: 14px;
+                    }
+                }
+
+                button{
+                    width: 120px;
+                    padding: 8px 0;
+                    font-size: 16px;
+                    cursor: pointer;
+                    background-color: #FE9B0D;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    opacity: 0;
+                    transition: all 0.3s;
+                    transform: translateY(10px);
+                }
+
+                &:hover button{
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }
+}
+
+//  Responsive Design
+
+@media only screen and (max-width: 992px) {
+    section{
+        padding: 100px 10px;
+        .main-inner{
+            .main-text{
+                padding: 0;
+
+                h1{
+                    font-size: 40px;
+                }
+            }
+            .main-form{
+                form{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    .input{
+                        width: 100%;
+                        margin: 10px 0;
+                    }
+
+                    div{
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        button{
+                            margin: 10px;                     }
+                    }
+                }
+            }
+        }
+    }
+
+    .category-section{
+        width: 100%;
+        padding: 50px 10px;
+
+        .category-inner{
+            width: 100%;
+
+            .head{
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                flex-wrap: wrap;
+
+                text-align: center;
+            }
+            .categories{
+                width: 100%;
+
+                .category-box{
+                    width: 30%;
+                    margin: 10px 0;
+                }
+            }
+        }
+    }
+  }
+
+
+
+  @media only screen and (max-width: 576px) {
+    .category-section{
+        width: 100%;
+        padding: 50px 10px;
+
+        .category-inner{
+            width: 100%;
+
+            .head{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+                flex-wrap: wrap;
+
+                text-align: center;
+            }
+            .categories{
+                width: 100%;
+
+                .category-box{
+                    width: 100%;
+                    margin: 10px 0;
+                }
+            }
+        }
+    }
+  }

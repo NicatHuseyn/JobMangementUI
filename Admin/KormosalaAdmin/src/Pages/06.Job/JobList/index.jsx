@@ -1,9 +1,20 @@
-import React from 'react'
+import styles from "./index.module.scss";
+
+import { endpoints } from "../../../Services/httpClientServer";
+import TableComponent from "../../../Components/TableComponent";
 
 const JobList = () => {
   return (
-    <div>JobList</div>
-  )
-}
+    <section>
+      <div className={styles["inner"]}>
+        <h1>Job List Page</h1>
+      </div>
 
-export default JobList
+      <div className={styles["list"]}>
+        <TableComponent endpoint={endpoints.jobs} />
+      </div>
+    </section>
+  );
+};
+
+export default JobList;

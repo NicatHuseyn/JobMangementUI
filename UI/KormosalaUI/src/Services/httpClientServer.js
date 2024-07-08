@@ -83,6 +83,5 @@ export const endpoints = {
     blogs: "blogs",
     jobs: "jobs",
     uploadfile: "uploadfile",
-    locations: "locations",
-    GetCategoryWithJobs: "getcategorywithjobs"
+    locations: "locations"
 }
