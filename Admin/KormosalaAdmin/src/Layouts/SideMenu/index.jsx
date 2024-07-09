@@ -9,6 +9,7 @@ import { BsBuildings } from "react-icons/bs";
 import { TbLogs } from "react-icons/tb";
 import { MdWorkOutline } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
 
 const SideMenu = () => {
   // ? Side Menu Item
@@ -39,7 +40,7 @@ const SideMenu = () => {
         },
         {
           key: "4",
-          label: <NavLink to="/update-industry">Update Industry</NavLink>,
+          label: <NavLink to="/update-industries/:id">Update Industry</NavLink>,
         },
       ],
     },
@@ -135,6 +136,17 @@ const SideMenu = () => {
         {
           key: "19",
           label: <NavLink to="/update-jobs">Update Job</NavLink>,
+        },
+      ],
+    },
+    {
+      key: "sub9",
+      label: "User",
+      icon: <FaUser />,
+      children: [
+        {
+          key: "20",
+          label: <NavLink to="/add-user">Create User</NavLink>,
         },
       ],
     },

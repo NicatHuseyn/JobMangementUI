@@ -17,8 +17,14 @@ import JobList from "../Pages/06.Job/JobList";
 import CreateJob from "../Pages/06.Job/CreateJob";
 import UpdateJob from "../Pages/06.Job/UpdateJob";
 import CreateLocation from "../Pages/07.Location/CreateLocation";
+import AddUser from "../Pages/AddUserPage";
+import LoginPage from "../Pages/LoginPage";
 
 export const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
   {
     path: "/",
     element: <AdminLayout />,
@@ -36,7 +42,7 @@ export const router = createBrowserRouter([
         element: <CreateIndustry />,
       },
       {
-        path: "update-industries",
+        path: "update-industries/:id",
         element: <UpdateIndustry />,
       },
       {
@@ -48,7 +54,7 @@ export const router = createBrowserRouter([
         element: <CreateCategory />,
       },
       {
-        path: "update-categories",
+        path: "update-categories/:id",
         element: <UpdateCategory />,
       },
       {
@@ -60,7 +66,7 @@ export const router = createBrowserRouter([
         element: <CreateCompany />,
       },
       {
-        path: "update-companies",
+        path: "update-companies/:id",
         element: <UpdateCompany />,
       },
       {
@@ -72,7 +78,7 @@ export const router = createBrowserRouter([
         element: <CreateBlog />,
       },
       {
-        path: "update-blogs",
+        path: "update-blogs/:id",
         element: <UpdateBlog />,
       },
       {
@@ -84,12 +90,16 @@ export const router = createBrowserRouter([
         element: <CreateJob />,
       },
       {
-        path: "update-jobs",
+        path: "update-jobs/:id",
         element: <UpdateJob />,
       },
       {
         path: "create-locations",
         element: <CreateLocation />,
+      },
+      {
+        path: "add-user",
+        element: <AddUser />,
       },
     ],
   },

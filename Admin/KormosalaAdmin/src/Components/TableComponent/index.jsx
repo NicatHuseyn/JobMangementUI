@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./index.module.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { Table, Button, Modal } from "antd";
 import {
@@ -11,6 +11,8 @@ import {
 import toast, { Toaster } from "react-hot-toast";
 
 const TableComponent = ({ endpoint }) => {
+  const navigate = useNavigate();
+
   // Data works
   const [datas, setDatas] = useState([]);
   const [columns, setColumns] = useState([]);
@@ -20,7 +22,6 @@ const TableComponent = ({ endpoint }) => {
       .then((res) => {
         setDatas(res.data);
         generateColumns(res.data);
-        console.log(res);
       })
       .catch((err) => {
         console.error("Data fetch error: ", err);
@@ -30,13 +31,6 @@ const TableComponent = ({ endpoint }) => {
   }, []);
 
   // Handle Update
-
-  const [updateData, setUpdateData] = useState(null);
-
-  function getSelectData(idParam) {
-    const findData = datas.find((d) => d.id === idParam);
-    setUpdateData(findData);
-  }
 
   // Handle Update
 
@@ -48,7 +42,7 @@ const TableComponent = ({ endpoint }) => {
 
     const sampleItem = data[0];
     const generatedColumns = Object.keys(sampleItem).map((key) => ({
-      title: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize the first letter
+      title: key.charAt(0).toUpperCase() + key.slice(1),
       dataIndex: key,
     }));
 
@@ -76,11 +70,9 @@ const TableComponent = ({ endpoint }) => {
             style={{ backgroundColor: "green" }}
             type="primary"
             danger
-            onClick={() => {
-              getSelectData(record.id);
-            }}
+            onClick={() => navigate(`/update-${endpoint}/${record.id}`)}
           >
-            <NavLink to={`/update-${endpoint}`}>Update</NavLink>
+            Update
           </Button>
         ),
       }

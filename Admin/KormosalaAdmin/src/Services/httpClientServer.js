@@ -76,6 +76,21 @@ export async function deleteData(endpoints, id) {
 // }
 
 
+// Create user
+export async function authorizationData(endpoint, payload) {
+    try {
+        const response = await axios.post(`${BASE_URL}/${endpoint}`, payload, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 export const endpoints = {
     industries: "industries",
     categories: "categories",
@@ -84,5 +99,6 @@ export const endpoints = {
     jobs: "jobs",
     uploadfile: "uploadfile",
     locations: "locations",
-    GetCategoryWithJobs: "getcategorywithjobs"
+    GetCategoryWithJobs: "getcategorywithjobs",
+    users: "users"
 }

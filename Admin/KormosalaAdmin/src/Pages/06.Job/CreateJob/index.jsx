@@ -13,9 +13,8 @@ import {
 import TextArea from "antd/es/input/TextArea";
 import { useEffect, useState } from "react";
 
-const { Option } = Select;
-
 const CreateJob = () => {
+  const { Option } = Select;
   // Code for yup
   const ValidationSchema = Yup.object().shape({
     name: Yup.string()
@@ -29,7 +28,7 @@ const CreateJob = () => {
       .required("Required"),
 
     salary: Yup.number().min(0, "Salary must be positive").required("Required"),
-    exprience: Yup.number()
+    experience: Yup.number()
       .min(0, "Exprience must be positive")
       .required("Required"),
     jobType: Yup.string()
@@ -51,10 +50,10 @@ const CreateJob = () => {
         name: "",
         description: "",
         salary: 0,
-        exprience: 0,
+        experience: 0,
         jobType: "",
-        categoryId: 1,
-        companyId: 1
+        categoryId: null,
+        companyId: null,
       },
       validationSchema: ValidationSchema,
       onSubmit: (values, { resetForm }) => {
@@ -162,36 +161,36 @@ const CreateJob = () => {
             </div>
 
             <div>
-              <label htmlFor="exprience">Exprience</label>
+              <label htmlFor="experience">Exprience</label>
               <Input
-                id="exprience"
-                name="exprience"
+                id="experience"
+                name="experience"
                 type="number"
                 onChange={handleChange}
-                value={values.exprience}
+                value={values.experience}
                 placeholder="Enter Job Exprience"
               />
-              {errors.exprience && touched.exprience && (
-                <div className="error">{errors.exprience}</div>
+              {errors.experience && touched.experience && (
+                <div className="error">{errors.experience}</div>
               )}
             </div>
 
             <div>
               <label htmlFor="categoryId">Category</label>
               <Select
-               style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
                 id="categoryId"
                 name="categoryId"
                 value={values.categoryId}
                 onChange={(value) => setFieldValue("categoryId", value)}
                 placeholder="Select Category"
               >
-                 <Option></Option>
+                <Option></Option>
                 {allCategories.map((category) => (
                   <Option key={category.id} value={category.id}>
                     {category.name}
