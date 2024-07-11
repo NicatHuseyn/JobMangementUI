@@ -2,8 +2,11 @@ import styles from "../HomePage/index.module.scss";
 import { NavLink } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { FaArrowRightLong } from "react-icons/fa6";
+
 import { useEffect, useState } from "react";
 import { endpoints, getAllData } from "../../Services/httpClientServer";
+import JobsComponent from "../../Components/JobsComponent";
+import BlogCard from "../../Components/BlogCardComponent";
 
 const HomePage = () => {
   const [categories, setCategories] = useState([]);
@@ -58,7 +61,7 @@ const HomePage = () => {
 
                 <div>
                   <button>
-                    <IoSearch /> 
+                    <IoSearch />
                     Find Jobs
                   </button>
                 </div>
@@ -85,15 +88,15 @@ const HomePage = () => {
 
             <div className={styles["categories"]}>
               {fiveCategory.map((c) => {
-                console.log(c.description);
+                console.log(c);
                 return (
-                  <div className={styles["category-box"]}>
+                  <div key={c} className={styles["category-box"]}>
                     <NavLink>
                       <h4>{c.name}</h4>
                       <p>{c.description}</p>
                     </NavLink>
 
-                    <button>Salam</button>
+                    <button>Get Jobs</button>
                   </div>
                 );
               })}
@@ -102,7 +105,32 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Code for */}
+      {/* Code for feature jobs*/}
+      <JobsComponent />
+
+      {/* code for blog cards */}
+      <BlogCard />
+
+      {/* code for start job */}
+
+      <section className={styles["start-jobs"]}>
+        <div className="container">
+          <div className={styles["start-job-inner"]}>
+            <div className={styles["text"]}>
+              <h1>Get Start Your New Job With Us !</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis
+              </p>
+            </div>
+
+            <div className={styles["start-job-button"]}>
+              <button>Create an Account</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

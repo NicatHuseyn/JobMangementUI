@@ -13,15 +13,15 @@ const CreateBlog = () => {
   const ValidationSchema = Yup.object().shape({
     title: Yup.string()
       .min(3, "Too Short!")
-      .max(100, "Too Long!")
+      .max(1000, "Too Long!")
       .required("Required"),
     text: Yup.string()
       .min(3, "Too Short!")
-      .max(100, "Too Long!")
+      .max(10000, "Too Long!")
       .required("Required"),
     image: Yup.string()
       .min(3, "Too Short!")
-      .max(100, "Too Long!")
+      .max(1000, "Too Long!")
       .required("Required"),
   });
   // Code for yup

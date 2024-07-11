@@ -1,3 +1,4 @@
+import Footer from "../Layouts/Footer";
 import Header from "../Layouts/Header";
 import { Outlet } from "react-router-dom";
 
@@ -6,6 +7,7 @@ const UILayout = () => {
     <>
       <Header />
       <Outlet />
+      <Footer />
     </>
   );
 };

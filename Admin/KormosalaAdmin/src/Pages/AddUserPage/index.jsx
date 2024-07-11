@@ -4,7 +4,11 @@ import { useFormik } from "formik";
 import { Button, Input } from "antd";
 import toast, { Toaster } from "react-hot-toast";
 import * as Yup from "yup";
-import { authorizationData, endpoints } from "../../Services/httpClientServer";
+import {
+  authenticationData,
+  authorizationData,
+  endpoints,
+} from "../../Services/httpClientServer";
 
 const AddUser = () => {
   // Code For YUP
@@ -42,7 +46,7 @@ const AddUser = () => {
 
     validationSchema: CreateUserSchema,
     onSubmit: (values, { resetForm }) => {
-      authorizationData(endpoints.users, values).then((res) => {
+      authenticationData(endpoints.users, values).then((res) => {
         if (res.data.success) {
           toast.success("User added successfully");
         } else {
@@ -62,7 +66,7 @@ const AddUser = () => {
       <Toaster position="top-right" reverseOrder={false} />
       <div className="container">
         <div className="inner">
-          <h1>Add User</h1>
+          <h1>Create User</h1>
           <div className="form-page">
             <form onSubmit={handleSubmit}>
               <div>

@@ -2,6 +2,8 @@ import { BASE_URL } from "./const";
 import axios from "axios";
 
 
+
+
 // Get All Data
 export const getAllData = async (endpoint) => {
     try {
@@ -77,6 +79,21 @@ export async function deleteData(endpoints, id) {
 
 
 // Create user
+export async function authenticationData(endpoint, payload) {
+    try {
+        const response = await axios.post(`${BASE_URL}/${endpoint}`, payload, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// ?  Autherization
+
 export async function authorizationData(endpoint, payload) {
     try {
         const response = await axios.post(`${BASE_URL}/${endpoint}`, payload, {
@@ -89,6 +106,8 @@ export async function authorizationData(endpoint, payload) {
         console.log(error);
     }
 }
+
+// ?  Autherization
 
 
 export const endpoints = {

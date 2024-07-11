@@ -19,6 +19,8 @@ import UpdateJob from "../Pages/06.Job/UpdateJob";
 import CreateLocation from "../Pages/07.Location/CreateLocation";
 import AddUser from "../Pages/AddUserPage";
 import LoginPage from "../Pages/LoginPage";
+import PrivateRoute from "../Pages/PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +29,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <AdminLayout />,
+    element: (
+      <PrivateRoute>
+        <AdminLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
@@ -38,7 +44,7 @@ export const router = createBrowserRouter([
         element: <Industry />,
       },
       {
-        path: "/create-industry",
+        path: "create-industry",
         element: <CreateIndustry />,
       },
       {
@@ -100,6 +106,10 @@ export const router = createBrowserRouter([
       {
         path: "add-user",
         element: <AddUser />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },

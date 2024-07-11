@@ -3,20 +3,20 @@ import "./index.scss";
 import { Button, Input, Form } from "antd";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { authorizationData, endpoints } from "../../Services/httpClientServer";
+import { authenticationData, authorizationData, endpoints } from "../../Services/httpClientServer";
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
   const onFinish = (values) => {
-    authorizationData(`${endpoints.users}/login`, values).then((res) => {
+    authenticationData(`${endpoints.users}/login`, values).then((res) => {
       try {
         if (
           res &&
           res.data &&
-          res.data.data.success &&
-          localStorage.getItem("token")
+          res.data.data.success 
         ) {
+          console.log(res.data.data);
           toast.success(res.data.message);
           localStorage.setItem("token", res.data.data.token.accessToken);
           navigate("/");
