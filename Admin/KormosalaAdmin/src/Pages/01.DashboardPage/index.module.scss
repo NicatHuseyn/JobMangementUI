@@ -1,0 +1,65 @@
+section{
+    width: 100%;
+    .dashboard-inner{
+        width: 100%;
+
+        .header{
+            width: 100%;
+            padding: 20px 0;
+
+            form{
+                input{
+                    padding: 10px 5px ;
+                    width: 400px;
+                    border: 1px solid rgba(0, 0, 0, 0.4);
+                    outline: none;
+                    border-radius: 8px;
+                }
+            }
+        }
+
+        .jobs{
+            width: 100%;
+            .job-layout{
+                width: 100%;
+                padding: 15px 5px;
+                border-top: 1px solid rgba(0, 0, 0, 0.4);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+                margin-bottom: 5px;
+
+                .layout-inner{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+
+                    .job-name{
+                        h3{
+                            a{
+                                color: #000;
+                                font-size: 16px;
+                                font-weight: 500;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+
+                    .job-create{
+                        p{
+                            font-size: 16px;
+                            font-style: italic;
+                        }
+                    }
+
+                    .job-company{
+                        h3{
+                            color: #000;
+                            font-size: 16px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
