@@ -3,7 +3,17 @@ import "./index.scss";
 import { Button, Input, Form } from "antd";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { authenticationData, authorizationData, endpoints } from "../../Services/httpClientServer";
+import {
+  authenticationData,
+  authorizationData,
+  endpoints,
+  googleLoginData,
+} from "../../Services/httpClientServer";
+// import { GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+
+import axios from "axios";
+import { BASE_URL } from "../../Services/const";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -11,11 +21,7 @@ const LoginPage = () => {
   const onFinish = (values) => {
     authenticationData(`${endpoints.users}/login`, values).then((res) => {
       try {
-        if (
-          res &&
-          res.data &&
-          res.data.data.success 
-        ) {
+        if (res && res.data && res.data.data.success) {
           console.log(res.data.data);
           toast.success(res.data.message);
           localStorage.setItem("token", res.data.data.token.accessToken);
@@ -35,12 +41,36 @@ const LoginPage = () => {
 
   //   !  Code For Create User
 
+  // Code For Google Login
+
+  const handleGoogleLogin = (credentialResponse) => {
+    googleLoginData(`${endpoints.users}/google-login`, credentialResponse).then(
+      (res) => {
+        try {
+          if (res && res.data) {
+            console.log(res.data.data);
+            toast.success(res.data.message);
+            localStorage.setItem("token", res.data.token.accessToken);
+            navigate("/");
+          } else {
+            toast.error(res.data.message);
+          }
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
+    );
+  };
+
+  // Code For Google Login
+
   return (
     <section className="login">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="container">
         <div className="login-box">
           <div className="form">
+            <h1 style={{ textAlign: "center", margin: "20px 0" }}>Login</h1>
             <Form
               name="basic"
               labelCol={{
@@ -96,6 +126,20 @@ const LoginPage = () => {
                 </Button>
               </Form.Item>
             </Form>
+
+            <div className="google">
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  handleGoogleLogin(credentialResponse);
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+                useOneTap
+              />
+            </div>
+
+            <div className="faceboo"></div>
           </div>
         </div>
       </div>

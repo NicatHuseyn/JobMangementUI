@@ -110,6 +110,22 @@ export async function authorizationData(endpoint, payload) {
 // ?  Autherization
 
 
+// ! Code For Google Login
+export const googleLoginData = async (endpoint, payload) => {
+    try {
+        const response = await axios.post(`${BASE_URL}/${endpoint}`, payload, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
+// ! Code For Google Login
+
+
 export const endpoints = {
     industries: "industries",
     categories: "categories",
@@ -119,5 +135,5 @@ export const endpoints = {
     uploadfile: "uploadfile",
     locations: "locations",
     GetCategoryWithJobs: "getcategorywithjobs",
-    users: "users"
+    users: "users",
 }
