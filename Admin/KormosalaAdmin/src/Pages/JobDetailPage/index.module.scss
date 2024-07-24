@@ -1,0 +1,51 @@
+.job-detail{
+    width: 100%;
+    
+    .detail-inner{
+        .job-title{
+            margin-bottom: 30px;
+            h1{
+                color: #000;
+                display: flex;
+                align-items: center;
+                font-size: 30px;
+                margin: 20px 0;
+            }
+
+            .job-date{
+                margin: 20px 0;
+                span{
+                    padding: 10px;
+                    border: 1px solid rgba(235, 252, 7, 0.7);
+                    border-radius: 4px;
+                }
+            }
+
+            .job-company{
+                h3{
+                    color: #333;
+                    font-size: 14px;
+                    font-weight: 400;
+                }
+            }
+        }
+
+        .job-requirements{
+            h5{
+                color: #000;
+                font-size: 16px;
+                margin-bottom: 20px;
+                font-weight: 600;
+            }
+
+            .job-description{
+                p{
+                    color: #000;
+                    font-size: 16px;
+                    font-weight: 500;
+                    font-family: sans-serif;
+                }
+            }
+        }
+    }
+}

@@ -6,9 +6,12 @@ import { Table, Button, Modal } from "antd";
 import {
   deleteData,
   endpoints,
+  getAllAuthData,
   getAllData,
 } from "../../Services/httpClientServer";
 import toast, { Toaster } from "react-hot-toast";
+import { BASE_URL } from "../../Services/const";
+import axios from "axios";
 
 const TableComponent = ({ endpoint }) => {
   const navigate = useNavigate();
@@ -17,8 +20,11 @@ const TableComponent = ({ endpoint }) => {
   const [datas, setDatas] = useState([]);
   const [columns, setColumns] = useState([]);
 
+
+  const accessToken = localStorage.getItem('token');
+
   useEffect(() => {
-    getAllData(`${endpoint}`)
+    getAllAuthData(`${endpoint}`,accessToken)
       .then((res) => {
         setDatas(res.data);
         generateColumns(res.data);

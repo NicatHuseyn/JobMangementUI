@@ -79,6 +79,6 @@ button:focus-visible {
   color: red;
 }
 
-.active{
-  color: #fff;
+a{
+  text-decoration: none;
 }

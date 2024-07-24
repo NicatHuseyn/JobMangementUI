@@ -4,10 +4,23 @@ import axios from "axios";
 
 
 
+
+
 // Get All Data
 export const getAllData = async (endpoint) => {
     try {
         const response = await axios.get(`${BASE_URL}/${endpoint}`);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const getAllAuthData = async (endpoint,token) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/${endpoint}`, {headers:{
+            'Authorization':`Bearer ${token}`
+        }});
         return response;
     } catch (error) {
         console.log(error);
@@ -125,6 +138,17 @@ export const googleLoginData = async (endpoint, payload) => {
 }
 // ! Code For Google Login
 
+// ? Auhth with jwt token configuration
+
+// export const setAuthToken = token => {
+//     if (token) {
+//         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+//     } else
+//         delete axios.defaults.headers.common["Authorization"];
+// }
+
+// ? Auhth with jwt token configuration
+
 
 export const endpoints = {
     industries: "industries",
@@ -136,4 +160,6 @@ export const endpoints = {
     locations: "locations",
     GetCategoryWithJobs: "getcategorywithjobs",
     users: "users",
+    auth: "auth",
+    login: "login"
 }

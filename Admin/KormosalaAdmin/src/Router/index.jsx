@@ -21,6 +21,7 @@ import AddUser from "../Pages/AddUserPage";
 import LoginPage from "../Pages/LoginPage";
 import PrivateRoute from "../Pages/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage";
+import JobDetail from "../Pages/JobDetailPage";
 
 export const router = createBrowserRouter([
   {
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
       {
         path: "add-user",
         element: <AddUser />,
+      },
+      {
+        path: "jobs/:id",
+        element: <JobDetail />,
       },
       {
         path: "*",

@@ -2,14 +2,24 @@ import { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import { NavLink } from "react-router-dom";
 import { endpoints, getAllData } from "../../Services/httpClientServer";
+import toast from "react-hot-toast";
 
 const Dashboard = () => {
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
-    getAllData(endpoints.jobs).then((res) => {
-      setDatas(res.data);
-    });
+    getAllData(endpoints.jobs)
+      .then((res) => {
+        if (res.data.length > 0) {
+          setDatas(res.data);
+        } else {
+          setDatas([]);
+        }
+      })
+      .catch((err) => {
+        setDatas([]);
+        toast.error(err);
+      });
   }, []);
 
   return (

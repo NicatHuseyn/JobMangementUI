@@ -19,13 +19,18 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const onFinish = (values) => {
-    authenticationData(`${endpoints.users}/login`, values).then((res) => {
+    authenticationData(`${endpoints.auth}/login`, values).then((res) => {
       try {
         if (res && res.data && res.data.data.success) {
-          console.log(res.data.data);
           toast.success(res.data.message);
           localStorage.setItem("token", res.data.data.token.accessToken);
-          navigate("/");
+          const token = localStorage.getItem("token");
+          if (res.data.data.token.accessToken === token) {
+            navigate("/");
+          }
+          else{
+            navigate('/login');
+          }
         } else {
           toast.error(res.data.message);
         }
@@ -44,8 +49,9 @@ const LoginPage = () => {
   // Code For Google Login
 
   const handleGoogleLogin = (credentialResponse) => {
-    googleLoginData(`${endpoints.users}/google-login`, credentialResponse).then(
+    googleLoginData(`${endpoints.auth}/google-login`, credentialResponse).then(
       (res) => {
+        console.log(res);
         try {
           if (res && res.data) {
             console.log(res.data.data);
@@ -63,6 +69,12 @@ const LoginPage = () => {
   };
 
   // Code For Google Login
+
+  // GOOGLE Login
+  const login = useGoogleLogin({
+    onSuccess: tokenResponse => console.log(tokenResponse),
+  });
+  // GOOGLE Login
 
   return (
     <section className="login">
@@ -131,15 +143,16 @@ const LoginPage = () => {
               <GoogleLogin
                 onSuccess={(credentialResponse) => {
                   handleGoogleLogin(credentialResponse);
+                  console.log(credentialResponse);
                 }}
                 onError={() => {
                   console.log("Login Failed");
                 }}
                 useOneTap
               />
-            </div>
+              {/* <Button onClick={() => login()}>Sign in with Google 🚀</Button>; */}
 
-            <div className="faceboo"></div>
+            </div>
           </div>
         </div>
       </div>
